@@ -1,0 +1,125 @@
+# github.com/rafi i3status config
+
+# i3status configuration file
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+	colors = false
+	color_good = "#BBBBBB"
+	color_bad = "#CC1616"
+	color_degraded = "#55858E"
+	interval = 5
+}
+
+order += "volume master"
+order += "battery 0"
+#order += "load"
+#order += "cpu_temperature 0"
+#order += "cpu_temperature 1"
+#order += "cpu_temperature 2"
+#order += "cpu_temperature 3"
+order += "disk /"
+#order += "disk /media/media"
+order += "ethernet enp0s25"
+order += "wireless wlp3s0"
+order += "path_exists VPN"
+order += "cpu_usage"
+order += "tztime local"
+#order += "ipv6"
+#order += "run_watch DHCP"
+
+volume master {
+	format = "Volume: %volume" 
+	device = "default"
+	mixer = "Master"
+    format_muted = "Volume: Muted"
+    mixer_idx = 0
+	# termsyn font
+	#format = "À %volume "
+}
+
+battery 0 {
+	format = "%status %percentage"
+	status_bat = "BAT:"
+	status_chr = "CHR:"
+	integer_battery_capacity = true
+	path = "/sys/class/power_supply/BAT0/uevent"
+}
+
+load {
+#	format = " Δ: %1min "
+	# termsyn font
+	format = "CPU: %1min"
+}
+
+cpu_usage {
+	format = "CPU: %usage"
+}
+
+cpu_temperature 0 {
+	format = " ± %degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp2_input"
+	max_threshold = 95
+}
+
+cpu_temperature 1 {
+	format = "%degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp3_input"
+	max_threshold = 95
+}
+
+cpu_temperature 2 {
+	format = "%degrees°"
+	path = "/sys/devices/platform/coretemp.0/temp4_input"
+	max_threshold = 95
+}
+
+cpu_temperature 3 {
+	format = "%degrees° "
+	path = "/sys/devices/platform/coretemp.0/temp5_input"
+	max_threshold = 95
+}
+
+disk "/" {
+	format = "SSD: %avail" 
+}
+
+disk "/media/media" {
+	format = " ¨ %avail:m "
+}
+
+wireless wlp3s0 {
+	format_up = "Wifi: %quality"
+	format_down = "WiFi: None"
+}
+
+ethernet enp0s25 {
+	# if you use %speed, i3status requires root privileges
+	format_up =  "Ethernet: %speed"
+	format_down = "Ethernet: none"
+
+	# termsyn font
+	#format_up =  " ­ %ip "
+	#format_down = " Ð eth0 "
+}
+
+run_watch DHCP {
+	pidfile = "/var/run/dhclient*.pid"
+}
+
+path_exists VPN {
+    #path exists when a VPN tunnel launched by nmcli/nm-applet is active
+    path = "/proc/sys/net/ipv4/conf/tun0"
+            
+}
+
+tztime local {
+#	format = " %h-%d %H:%M ☰ "
+	# termsyn font
+	format = "Date: %d-%m Time: %H:%M"
+}

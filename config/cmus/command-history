@@ -1,0 +1,20 @@
+set show_remaining_time=false
+set show_remaining_time=true
+set buffer_seconds=20
+clear
+set smart_artist_sort=true
+set color_win_attr=default
+rename
+set smart_artist_sort=false
+set show_current_bitrate=true
+set mouse=true
+set status_display_program=cmusfm
+colorscheme itunes
+colorscheme xterm-white
+colorscheme gray-88
+colorscheme zenburn
+colorscheme solarized-dark
+colorscheme default
+colorscheme green-mono-88
+colorscheme solarized-light
+colorscheme theme

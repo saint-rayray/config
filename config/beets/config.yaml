@@ -1,0 +1,5 @@
+directory: ~/storage/Music
+library: ~/storage/Music/musiclibrary.db
+import:
+        move: yes
+
